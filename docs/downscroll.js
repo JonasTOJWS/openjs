@@ -35,3 +35,5 @@ Reveal.addEventListener('slidechanged', function (event) {
     resetSlideScrolling(event.previousSlide)
     handleSlideScrolling(event.currentSlide);
 });
+
+Reveal.initialize();
