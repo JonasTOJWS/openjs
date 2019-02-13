@@ -5,8 +5,8 @@ function resetSlideScrolling(slide) {
 }
 
 function handleSlideScrolling(slide) {
-    //if ($(slide).height() >= $(window).height()) { // Bug Safari..
-    if ($(slide).height() >= 800) {
+    if ($(slide).height() >= $(window).height()) { // Bug Safari..
+    //if ($(slide).height() >= 800) {
         $(slide).addClass('scrollable-slide');
         $('html').on("keydown", function(e) {
             if(e.shiftKey) {
