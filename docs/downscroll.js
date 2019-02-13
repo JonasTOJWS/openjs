@@ -5,7 +5,7 @@ function resetSlideScrolling(slide) {
 }
 
 function handleSlideScrolling(slide) {
-    if ($(slide).height() >= $(windows).height() {
+    if ($(slide).height() >= $(windows).height()) {
         $(slide).addClass('scrollable-slide');
         $('html').on("keydown", function(e) {
             if(e.shiftKey) {
