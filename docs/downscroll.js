@@ -5,7 +5,7 @@ function resetSlideScrolling(slide) {
 }
 
 function handleSlideScrolling(slide) {
-    if ($(slide).height() >= $(window).height()) { // Bug Safari..
+    //if ($(slide).height() >= $(window).height()) { // Bug Safari..
         $(slide).addClass('scrollable-slide');
         $('html').on("keydown", function(e) {
             if(e.shiftKey) {
@@ -23,7 +23,7 @@ function handleSlideScrolling(slide) {
                 $(slide).stop(true, false);
             }
         });*/
-    }
+    //}
 }
 
 Reveal.addEventListener('ready', function (event) {
