@@ -1,34 +1,26 @@
 
-
-// Play song clicked on..
-
-
-$(".pylist a").on("click", function() {
+$(".pylistSong").on("click", function() {
     playlistPlay($(this));
 });
 
 // Play next song auto..
-$(".pylist [adplayer]").on("ended", function() {
+$(".pylistAudio").on("ended", function() {
     let audio = $(this);
-    let player = audio.attr("adplayer");
-    let index = parseInt(audio.attr("index"));
-    let nextIndex = (index+1) + "";
-    let next = $(".pylist [player = '" + player + "'][index = '"+nextIndex+"']");
-    if(next && next.is("a")) {
+    let cont = $(audio.parents('div[class="pylist"]')[0]);
+    let div = $(cont.find(".pylistPlay")[0]);
+    let next = $(div.next());
+    if(next.hasClass("pylistSong")) {
         playlistPlay(next);
     }
 });
 
 
-function playlistPlay(a) {
-    let playerId = a.attr("player");
-    $(".pylist [player]").removeClass("playclass");
-    a.addClass("playclass");
-    let src = a.attr("song");
-    let index = a.attr("index");
-
-    let audio = $(".pylist [adplayer = '" + playerId + "']");
-    audio.attr("index", index);
-    audio.attr("src", src);
+function playlistPlay(e) {
+    // Find parent pylist..
+    let cont = $(e.parents('div[class="pylist"]')[0]);
+    cont.find(".pylistPlay").removeClass("pylistPlay");
+    e.addClass("pylistPlay");
+    let audio = $(cont.find(".pylistAudio")[0]);
+    audio.attr("src", e.attr("rel"));
     audio[0].play();
 }
