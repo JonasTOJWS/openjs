@@ -9,7 +9,7 @@ $(function() {
                 if(pair.includes(":")) {
                     let p = pair.split(":")[0].trim();
                     let v = pair.split(":")[1].trim();
-                    opts[p] = parseInt(v);
+                    opts[p] = p == "loop" ? v == "true" : parseInt(v);
                 }
             }
         }
