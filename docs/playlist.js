@@ -1,19 +1,19 @@
+$(function() {   
+    $(".pylistSong").on("click", function() {
+        playlistPlay($(this));
+    });
 
-$(".pylistSong").on("click", function() {
-    playlistPlay($(this));
+    // Play next song auto..
+    $(".pylistAudio").on("ended", function() {
+        let audio = $(this);
+        let cont = $(audio.parents('div[class="pylist"]')[0]);
+        let div = $(cont.find(".pylistPlay")[0]);
+        let next = $(div.next());
+        if(next.hasClass("pylistSong")) {
+            playlistPlay(next);
+        }
+    });
 });
-
-// Play next song auto..
-$(".pylistAudio").on("ended", function() {
-    let audio = $(this);
-    let cont = $(audio.parents('div[class="pylist"]')[0]);
-    let div = $(cont.find(".pylistPlay")[0]);
-    let next = $(div.next());
-    if(next.hasClass("pylistSong")) {
-        playlistPlay(next);
-    }
-});
-
 
 function playlistPlay(e) {
     // Find parent pylist..
